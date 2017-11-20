@@ -64,7 +64,7 @@
 
 <style scoped>
   .navigate {
-    display: flex;
+    display: -webkit-box;
     padding: 20px 35px;
     align-items: center;
     background: #16293e;
