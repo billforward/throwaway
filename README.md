@@ -1,4 +1,4 @@
-# in-pants-stats
+# Packet Demo
 
 > A Vue.js project
 
