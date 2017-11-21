@@ -39,6 +39,10 @@ export const store = new Vuex.Store({
 
     setInvoices (state, invoices) {
       state.invoiceList = invoices
+    },
+
+    payInvoice (state, index) {
+      state.invoiceList[index].state = 'Paid'
     }
   }
 })

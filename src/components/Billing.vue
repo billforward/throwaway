@@ -55,7 +55,7 @@
                 td.cell
                   | {{invoice.invoiceCost - invoice.invoicePaid}}
                 td.cell
-                  .btn(v-if="invoice.state === 'Unpaid'" v-on:click="payInvoice()") Pay
+                  .btn(v-if="invoice.state === 'Pending'" v-on:click="payInvoice(index)") Pay
                   .status.status_paid(v-if="invoice.state === 'Paid'") Paid
                   a.btn.btn-icon(:href="invoiceHTML(index)" target="_blank")
                     img(:src="icons.eye")
@@ -104,10 +104,12 @@
     },
 
     methods: {
-      payInvoice () {
-        const invoiceID = store.state.invoiceList[0].id
+      payInvoice (index) {
+        const invoiceID = store.state.invoiceList[index].id
 
-        api.payInvoice(invoiceID)
+        api.payInvoice(invoiceID).then(() => {
+          store.commit('payInvoice', index)
+        })
       },
 
       invoiceHTML (index) {

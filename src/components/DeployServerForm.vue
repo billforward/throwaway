@@ -143,8 +143,9 @@
 
       getPlan () {
         const types = []
+        const servers = this.serverList.concat(this.servers)
 
-        this.servers.forEach(server => {
+        servers.forEach(server => {
           const typePath = _.find(this.typesList, {name: server.type}).path
 
           if (_.find(types, {typePath})) {
